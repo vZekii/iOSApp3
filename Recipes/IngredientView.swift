@@ -10,7 +10,11 @@ import SwiftUI
 struct IngredientView: View {
     var body: some View {
         // content for the ingredient page
-        Text("Ingredient")
+        NavigationView {
+            Text("Ingredient")
+                .navigationTitle("Ingredients")
+
+        }
     }
 }
 

@@ -13,10 +13,8 @@ struct ContentView: View {
     }
     
     @State private var selection = 1
-    private var titles = ["Ingredients", "Home", "Recipes"]
     
     var body: some View {
-        NavigationView {
             TabView(selection: $selection) {
                 IngredientView()
                     .tabItem {
@@ -38,11 +36,16 @@ struct ContentView: View {
                         Text("Recipes")
                     }
                     .tag(2)
+                
+                ProfileView()
+                    .tabItem {
+                        Image(systemName: "person.crop.circle")
+                        Text("Profile")
+                    }
+                    .tag(3)
                     
             }
-            .navigationTitle(titles[selection])
-
-        }
+    
     }
 }
 

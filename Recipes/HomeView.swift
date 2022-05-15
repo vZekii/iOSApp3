@@ -10,8 +10,10 @@ import SwiftUI
 // Just our tab view controller (just for switching tabs)
 struct HomeView: View {
     var body: some View {
-        Text("Home")
-            .navigationTitle("Home")
+        NavigationView {
+            Text("Home")
+                .navigationTitle("Home")
+        }
     }
 }
 
