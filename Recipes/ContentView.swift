@@ -8,29 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
+    init() {
+        UITabBar.appearance().backgroundColor = .systemGray6
+    }
+    
+    @State private var selection = 1
+    private var titles = ["Ingredients", "Home", "Recipes"]
+    
     var body: some View {
-        TabView {
-            IngredientView()
-                .tabItem {
-                    Image(systemName: "note.text")
-                    Text("Ingredients")
-                }
-            
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
-                }
-            
-            RecipeView()
-                .tabItem {
-                    Image(systemName: "lock.doc")
-                    Text("Recipes")
-                }
+        NavigationView {
+            TabView(selection: $selection) {
+                IngredientView()
+                    .tabItem {
+                        Image(systemName: "note.text")
+                        Text("Ingredients")
+                    }
+                    .tag(0)
                 
-        }
-        .onAppear() {
-            UITabBar.appearance().barTintColor = .green // change the bar background to gray
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Home")
+                    }
+                    .tag(1)
+                
+                RecipeView()
+                    .tabItem {
+                        Image(systemName: "lock.doc")
+                        Text("Recipes")
+                    }
+                    .tag(2)
+                    
+            }
+            .navigationTitle(titles[selection])
+
         }
     }
 }
