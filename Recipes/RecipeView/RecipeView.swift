@@ -9,12 +9,21 @@ import SwiftUI
 
 struct RecipeView: View {
     var body: some View {
+        let data = Recipe.sampleData
         // content for the recipe page
         NavigationView {
-            Text("Recipe")
-                .navigationTitle("Recipes")
-                
+            List(data) { recipe in
+                NavigationLink {
+                    RecipeDetailView(recipe: recipe)
+                } label: {
+                    RecipeRow(recipe: recipe)
+                }
+            }
+            .listStyle(.grouped)
+            .navigationTitle("Recipes")
         }
+    }
+}
         
         
 // potential code for later on
@@ -44,8 +53,6 @@ struct RecipeView: View {
 //            .navigationBarHidden(true)
 //        }
         
-    }
-}
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
