@@ -7,52 +7,15 @@
 
 import SwiftUI
 
+// Just our tab view controller (just for switching tabs)
 struct HomeView: View {
     var body: some View {
-        TabView {
-            Text("Home")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
-                }
-                
-        }
-    }
-}
-
-struct RecipeView: View {
-    var body: some View {
-        TabView {
-            Text("Recipes")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
-                }
-                
-        }
-    }
-}
-
-struct IngredientView: View {
-    var body: some View {
-        TabView {
-            Text("Ingredients")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
-                }
-                
-        }
+        Text("Home")
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-        RecipeView()
-        IngredientView()
     }
 }

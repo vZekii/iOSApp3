@@ -11,7 +11,25 @@ import SwiftUI
 struct RecipesApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            TabView {
+                IngredientView()
+                    .tabItem {
+                        Image(systemName: "note.text")
+                        Text("Ingredients")
+                    }
+                
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Home")
+                    }
+                
+                RecipeView()
+                    .tabItem {
+                        Image(systemName: "lock.doc")
+                        Text("Recipes")
+                    }
+            }
         }
     }
 }
