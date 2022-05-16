@@ -8,13 +8,41 @@
 import SwiftUI
 
 struct RecipeView: View {
+    
+    @State var searchText = ""
+    
     var body: some View {
-        // content for the recipe page
+        
         NavigationView {
-            Text("Recipe")
-                .navigationTitle("Recipes")
+            VStack(alignment: .leading) {
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color("LightGray"))
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search...", text: $searchText)
+                    }
+                        .foregroundColor(.gray)
+                        .padding(.leading, 13)
+                    
+                }
+                    .frame(height: 40)
+                    .cornerRadius(13)
+                    .padding()
                 
+                List(Recipe.sampleData) { recipe in
+                    NavigationLink {
+                        RecipeDetailView(recipe: recipe)
+                    } label: {
+                        RecipeRow(recipe: recipe)
+                    }
+                }
+                .listStyle(.grouped)
+            }
+            .navigationTitle("Recipes")
         }
+    }
+}
         
         
 // potential code for later on
@@ -44,8 +72,6 @@ struct RecipeView: View {
 //            .navigationBarHidden(true)
 //        }
         
-    }
-}
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {

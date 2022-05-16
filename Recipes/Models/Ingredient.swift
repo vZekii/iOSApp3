@@ -11,7 +11,7 @@ enum IngredientType {
     case dairy, fruit, vegetable
 }
 
-struct Ingredient: Hashable, Codable{
+struct Ingredient: Hashable {
     var name: String
     var type: IngredientType
 }
