@@ -11,20 +11,30 @@ struct RecipeRow: View {
     let recipe: Recipe
     
     var body: some View {
-        HStack {
-            recipe.photos[0]
-                .resizable()
-                .frame(width: 66, height: 66)
-            VStack(alignment: .leading) {
-                Text(recipe.name)
-                    .font(.headline)
-                Text("Can cook")
-                    .font(.subheadline)
-                Text("Havent made before")
-                    .font(.subheadline)
+        VStack {
+            HStack {
+                recipe.photos[0]
+                    .resizable()
+                    .frame(width: 66, height: 66)
+                VStack(alignment: .leading) {
+                    Text(recipe.name)
+                        .font(.headline)
+                    HStack {
+                        Image(systemName: "tick")
+                        Text("Can cook")
+                            .font(.subheadline)
+                            .foregroundColor(.green)
+                    }
+                    
+                    Text("Havent made before")
+                        .font(.subheadline)
+                }
+                Spacer()
+                Text("\(recipe.difficulty)")
             }
-            Spacer()
-            Text("\(recipe.difficulty)")
+            
+            ProgressView(value: Float(recipe.difficulty), total: 5.0)
+                .progressViewStyle(.linear)
         }
     }
 }
