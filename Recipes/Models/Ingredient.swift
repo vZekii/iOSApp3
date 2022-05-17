@@ -23,8 +23,8 @@ struct Ingredient: Hashable, Identifiable{
     var id: Int
     var name: String
     var type: IngredientType
-    var lastBoughtAmount: Double
-    var currentAmount: Double
+    var lastBoughtAmount: Measurement
+    var currentAmount: Measurement
 }
 
 func ingAdder (ingredient: Ingredient) {
@@ -37,22 +37,22 @@ extension Ingredient {
             id: 0,
                name: "Pasta",
                type: .noodle,
-            lastBoughtAmount: 300.0,
-            currentAmount: 60.0
+            lastBoughtAmount: Measurement(name: .gram, amount: 300.0),
+            currentAmount: Measurement(name: .gram, amount: 300.0)
             ),
         Ingredient(
             id: 1,
                name: "Milk",
                type: .dairy,
-            lastBoughtAmount: 3.0,
-            currentAmount: 1.0
+            lastBoughtAmount: Measurement(name: .gram, amount: 3),
+            currentAmount: Measurement(name: .litre, amount: 5)
             ),
         Ingredient(
             id: 2,
                name: "Carrot",
                type: .vegetable,
-            lastBoughtAmount: 9.0,
-            currentAmount: 8.0
+            lastBoughtAmount: Measurement(name: .number, amount: 6),
+            currentAmount: Measurement(name: .number, amount: 1)
             )
         
     ]
