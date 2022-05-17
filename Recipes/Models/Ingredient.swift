@@ -10,7 +10,7 @@ import Foundation
 enum IngredientType {
     // gotta figure out a better way to categorise things
     //case vegetable, fruit, meat, dairy, grain, baked_good, seafood, nut, herb, spice, garnish, oil, seasoning
-    case dairy, fruit, vegetable, noodle
+    case dairy, fruit, vegetable, noodle, misc
 }
 
 //struct Ingredient: Hashable {
