@@ -23,14 +23,14 @@ struct IngredientRow: View {
                     
                     Text("Last filled to")
                         .font(.subheadline)
-                    if amountLeft <= 0.2 * lastBought {
+                    if amountLeft <= (0.2 * lastBought) {
                         if #available(iOS 15.0, *) {
                             ProgressView("Amount Left...", value: amountLeft, total: lastBought).tint(Color.red)
                         } else {
                             // Fallback on earlier versions
                         }
                     }
-                    else if amountLeft <= 0.5 * lastBought {
+                    else if amountLeft <= (0.5 * lastBought) {
                         if #available(iOS 15.0, *) {
                             ProgressView("Amount Left...", value: amountLeft, total: lastBought).tint(Color.yellow)
                         } else {

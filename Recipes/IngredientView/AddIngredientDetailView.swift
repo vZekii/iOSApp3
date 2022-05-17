@@ -56,8 +56,6 @@ struct AddIngredientDetailView: View {
                 Menu {
                     Button {
                        unitHolder = "Milileters"
-                        let unitType = Measurement(name: .mililitre, amount: Float($name))
-                        unitType.
                     } label: {
                         Text("Milileters")
                     }
@@ -78,7 +76,6 @@ struct AddIngredientDetailView: View {
             }
   
            Button{
-                //Adds the ingredient to the list
                let newIngredient = Ingredient(id: id, name: name, type: type ?? .dairy, lastBoughtAmount: Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0), currentAmount: Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0))
                 let checker = Ingredient.sampleData.contains{$0.name == name }
                 if !checker {
