@@ -8,13 +8,36 @@
 import SwiftUI
 
 struct RecipeView: View {
+    
+    @State var searchText = ""
+    
     var body: some View {
-        // content for the recipe page
+        
         NavigationView {
-            Text("Recipe")
-                .navigationTitle("Recipes")
-                
+            // List each recipe in the sample data, creating a link to a detail view for each one as well
+            List(searchResults) { recipe in
+                NavigationLink {
+                    RecipeDetailView(recipe: recipe)
+                } label: {
+                    RecipeRow(recipe: recipe)
+                }
+            }
+            .listStyle(.grouped)
+            .navigationTitle("Recipes")
         }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+
+    }
+    
+    var searchResults: [Recipe] {
+        if searchText.isEmpty {
+            return Recipe.sampleData
+        } else {
+            return Recipe.sampleData.filter { $0.name.contains(searchText)}
+        }
+    }
+    
+}
         
         
 // potential code for later on
@@ -44,8 +67,6 @@ struct RecipeView: View {
 //            .navigationBarHidden(true)
 //        }
         
-    }
-}
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
