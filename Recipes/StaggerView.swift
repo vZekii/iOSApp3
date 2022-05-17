@@ -13,13 +13,20 @@ struct StaggerView<Content: View,T: Identifiable>: View {
     
     var list: [T]
     
-    init(@ViewBuilder content: @escaping (T) -> Content){
-        
+    init(list: [T],@ViewBuilder content: @escaping (T) -> Content){
+        self.content = content
+        self.list = list
     
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            ForEach(list) {object in
+                content(object)
+            }
+            
+        }
     }
 }
 

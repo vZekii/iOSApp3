@@ -9,19 +9,20 @@ import SwiftUI
 
 // Just our tab view controller (just for switching tabs)
 struct HomeView: View {
+    @State var posts: [Post] = []
     var body: some View {
-        VStack {
-            HStack {
-                Text("hi")
-                Text("test2")
-            }
-            HStack {
-                Text("1")
-                Text("2")
-                Text("3")
-            }
+        
+        NavigationView{
+            
+            StaggerView(list: posts, content: { post in
+                
+                Text(post.imageURL)
+            })
+                .navigationTitle("Home");
+            
             
         }
+        
     }
 }
 
