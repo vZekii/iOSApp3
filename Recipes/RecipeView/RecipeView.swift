@@ -14,34 +14,29 @@ struct RecipeView: View {
     var body: some View {
         
         NavigationView {
-            VStack(alignment: .leading) {
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(Color("LightGray"))
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        TextField("Search...", text: $searchText)
-                    }
-                        .foregroundColor(.gray)
-                        .padding(.leading, 13)
-                    
+            // List each recipe in the sample data, creating a link to a detail view for each one as well
+            List(searchResults) { recipe in
+                NavigationLink {
+                    RecipeDetailView(recipe: recipe)
+                } label: {
+                    RecipeRow(recipe: recipe)
                 }
-                    .frame(height: 40)
-                    .cornerRadius(13)
-                    .padding()
-                
-                List(Recipe.sampleData) { recipe in
-                    NavigationLink {
-                        RecipeDetailView(recipe: recipe)
-                    } label: {
-                        RecipeRow(recipe: recipe)
-                    }
-                }
-                .listStyle(.grouped)
             }
+            .listStyle(.grouped)
             .navigationTitle("Recipes")
         }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+
     }
+    
+    var searchResults: [Recipe] {
+        if searchText.isEmpty {
+            return Recipe.sampleData
+        } else {
+            return Recipe.sampleData.filter { $0.name.contains(searchText)}
+        }
+    }
+    
 }
         
         

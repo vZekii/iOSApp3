@@ -16,21 +16,26 @@ struct RecipeRow: View {
                 recipe.photos[0]
                     .resizable()
                     .frame(width: 66, height: 66)
+                    .cornerRadius(10)
                 VStack(alignment: .leading) {
                     Text(recipe.name)
                         .font(.headline)
                     HStack {
-                        Image(systemName: "tick")
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.green)
+                            .font(.subheadline)
                         Text("Can cook")
                             .font(.subheadline)
                             .foregroundColor(.green)
+                            .offset(x: -5)
                     }
                     
-                    Text("Havent made before")
-                        .font(.subheadline)
+//                    Text("Havent made before")
+//                        .font(.subheadline)
+//                        .foregroundColor(.gray)
                 }
                 Spacer()
-                Text("\(recipe.difficulty)")
+                //Text("\(recipe.difficulty)")
             }
             
             ProgressView(value: Float(recipe.difficulty), total: 5.0)
