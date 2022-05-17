@@ -1,14 +1,13 @@
 //
-//  RecipesApp.swift
+//  IngredientView.swift
 //  Recipes
 //
-//  Created by Zach Clare on 5/5/2022.
+//  Created by Zach Clare on 15/5/2022.
 //
 
 import SwiftUI
 
-@main //getting a thread 1 signal sigterm?
-struct RecipesApp: App {
+struct IngredientApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -31,7 +31,7 @@ extension Recipe {
                photos: [Image("pasta")],
                description: "Our best ever spaghetti bolognese is super easy and a true Italian classic with a meaty, chilli sauce. This recipe comes courtesy of BBC Good Food user Andrew Balmer",
                // instead of defining all the ingredients repetively, we should generate a list that we can reference via id
-               ingredients: [Ingredient(name: "pasta", type: .dairy): Measurement(name: .gram, amount: 500.0),
+               ingredients: [Ingredient(id: 1, name: "pasta", type: .dairy): Measurement(name: .gram, amount: 500.0),
                             ],
                timeToMake: 20,
                servings: 5,
@@ -55,7 +55,7 @@ extension Recipe {
                name: "Pasta 2 electric boogaloo",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [Ingredient(name: "pasta", type: .dairy): Measurement(name: .gram, amount: 500.0)],
+               ingredients: [Ingredient(id: 1, name: "pasta", type: .dairy, lastBoughtAmount: 300, currentAmount: 300): Measurement(name: "grams", amount: 500.0)],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
