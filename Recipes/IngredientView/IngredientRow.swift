@@ -13,8 +13,8 @@ let progressView = UIProgressView(progressViewStyle: .bar)
 struct IngredientRow: View {
     let ingredient : Ingredient
     var body: some View {
-        let amountLeft = ingredient.currentAmount
-        let lastBought = ingredient.lastBoughtAmount
+        let amountLeft = ingredient.currentAmount.amount
+        let lastBought = ingredient.lastBoughtAmount.amount
         VStack {
             HStack {
                 VStack(alignment: .leading) {
