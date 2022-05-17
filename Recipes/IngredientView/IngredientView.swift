@@ -69,7 +69,7 @@ struct IngredientView: View {
                                 }
                                 .tint(.green)
                                 Button() {
-                                    let holderIngredient = ShoppingList(id: ShoppingList.sampleData.count + 1, ingredient: ingredient, measurement:  Measurement(name: .litre, amount: 300.0))
+                                    let holderIngredient = ShoppingList(id: ShoppingList.sampleData.count + 1, ingredient: ingredient, measurement:  ingredient.lastBoughtAmount)
                                     ShoppingList.sampleData.append(holderIngredient)
                                 } label: {
                                     Label("Add to shopping list", systemImage: "cart")

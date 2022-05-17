@@ -11,13 +11,12 @@ import SwiftUI
 
 struct AddIngredientDetailView: View {
     @State private var alertPressed = false
-    var id = Ingredient.sampleData.count
     @State var name: String = ""
     @State var type: IngredientType?
-    @State var lastBoughtString: String = ""
     @State var typeHolder = "None Selected"
     @State var unitHolder = "Grams"
-    @State var unitType: Measurement?
+    @State var unitType: Measurement = Measurement(name: .number, amount: 0.0)
+    @State var lastBoughtString: String = ""
     
     var body: some View {
         var id = Ingredient.sampleData.count
@@ -56,16 +55,22 @@ struct AddIngredientDetailView: View {
                 Menu {
                     Button {
                        unitHolder = "Milileters"
+                        let holderMeasurement = Measurement(name: .mililitre, amount: Float(lastBoughtString) ?? 0.0)
+                        unitType = holderMeasurement
                     } label: {
                         Text("Milileters")
                     }
                     Button {
                         unitHolder = "Grams"
+                        let holderMeasurement = Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0)
+                        unitType = holderMeasurement
                     } label: {
                         Text("Grams")
                     }
                     Button {
                         unitHolder = "Units"
+                        let holderMeasurement = Measurement(name: .number, amount: Float(lastBoughtString) ?? 0.0)
+                        unitType = holderMeasurement
                     } label: {
                         Text("Units")
                     }
@@ -76,11 +81,12 @@ struct AddIngredientDetailView: View {
             }
   
            Button{
-               let newIngredient = Ingredient(id: id, name: name, type: type ?? .dairy, lastBoughtAmount: Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0), currentAmount: Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0))
+               let newIngredient = Ingredient(id: id, name: name, type: type ?? .dairy, lastBoughtAmount: unitType, currentAmount: unitType)
                 let checker = Ingredient.sampleData.contains{$0.name == name }
                 if !checker {
                     ingAdder(ingredient: newIngredient)
                     id += 1
+                    unitType = Measurement(name: .number, amount: 0.0)
                 }
                 else {
                     alertPressed = true;
