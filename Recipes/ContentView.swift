@@ -12,7 +12,7 @@ struct ContentView: View {
         UITabBar.appearance().backgroundColor = .systemGray6
     }
     
-    @State private var selection = 1
+    @State private var selection = 1 // sets the inital tab to the home tab
     
     var body: some View {
             TabView(selection: $selection) {
