@@ -19,8 +19,11 @@ struct HomeView: View {
                 Text(post.imageURL)
             })
                 .navigationTitle("Home");
-            
-            
+        }
+        .onAppear {
+            for index in 1...10 {
+                posts.append(Post(imageURL: "post\(index)"))
+            }
         }
         
     }
