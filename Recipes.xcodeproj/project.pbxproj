@@ -25,6 +25,7 @@
 		35ED9D4328236D790090DFB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35ED9D4228236D790090DFB6 /* Assets.xcassets */; };
 		35ED9D4628236D790090DFB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35ED9D4528236D790090DFB6 /* Preview Assets.xcassets */; };
 		35ED9D4D28236F620090DFB6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED9D4C28236F620090DFB6 /* Recipe.swift */; };
+		9CFA01D7283453E700443AFB /* StaggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFA01D6283453E700443AFB /* StaggerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		35ED9D4228236D790090DFB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35ED9D4528236D790090DFB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		35ED9D4C28236F620090DFB6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		9CFA01D6283453E700443AFB /* StaggerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				352A28CF2830EBB800E22E70 /* ContentView.swift */,
 				352A28D12830F4AA00E22E70 /* ProfileView.swift */,
 				35ED9D4028236D760090DFB6 /* HomeView.swift */,
+				9CFA01D6283453E700443AFB /* StaggerView.swift */,
 				3518BF8F28336D0B00EAA240 /* IngredientView */,
 				352A28DE28313CA800E22E70 /* RecipeView */,
 				35ED9D4228236D790090DFB6 /* Assets.xcassets */,
@@ -214,6 +217,7 @@
 				352A28CC2830E86600E22E70 /* RecipeView.swift in Sources */,
 				352A28D42830F6B700E22E70 /* Ingredient.swift in Sources */,
 				3518BF9528336DD700EAA240 /* AddIngredientDetailView.swift in Sources */,
+				9CFA01D7283453E700443AFB /* StaggerView.swift in Sources */,
 				352A28E228313EDF00E22E70 /* RecipeDetailView.swift in Sources */,
 				352A28D62830F6C000E22E70 /* Measurement.swift in Sources */,
 				3518BF9328336D6600EAA240 /* ShoppingList.swift in Sources */,
