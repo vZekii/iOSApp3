@@ -14,8 +14,7 @@ struct ShoppingListDetailView: View {
         
         var entry: ShoppingList
         var body: some View {
-//            Text("\(String(format: "%.2f", entry.measurement.amount)) \(entry.measurement.name) of \(entry.ingredient.name)")
-            Text("hi")
+            Text("\(entry.measurement.getMeasurement()) of \(entry.ingredient.name)")
         }
     }
         

@@ -17,6 +17,7 @@ struct AddIngredientDetailView: View {
     @State var lastBoughtString: String = ""
     @State var typeHolder = "None Selected"
     @State var unitHolder = "Grams"
+    @State var unitType: Measurement?
     
     var body: some View {
         var id = Ingredient.sampleData.count
@@ -75,8 +76,7 @@ struct AddIngredientDetailView: View {
             }
   
            Button{
-                //Adds the ingredient to the list
-               let newIngredient = Ingredient(id: id, name: name, type: type ?? .dairy, lastBoughtAmount: Double(lastBoughtString) ?? 0.0, currentAmount: Double(lastBoughtString) ?? 0.0)
+               let newIngredient = Ingredient(id: id, name: name, type: type ?? .dairy, lastBoughtAmount: Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0), currentAmount: Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0))
                 let checker = Ingredient.sampleData.contains{$0.name == name }
                 if !checker {
                     ingAdder(ingredient: newIngredient)
