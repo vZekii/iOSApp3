@@ -11,16 +11,16 @@ import SwiftUI
 
 struct AddIngredientDetailView: View {
     @State private var alertPressed = false
-    var id = Ingredient.sampleData.count
     @State var name: String = ""
-    @State var type: IngredientType?
-    @State var lastBoughtString: String = ""
+    @State var type: IngredientType = IngredientType.misc
     @State var typeHolder = "None Selected"
     @State var unitHolder = "Grams"
-    @State var unitType: Measurement?
+    @State var unitType: Measurement = Measurement(name: .number, amount: 1.0)
+    @State var lastBoughtString: String = ""
     
     var body: some View {
-        var id = Ingredient.sampleData.count
+        var lastChecker: Ingredient = Ingredient.sampleData.last!
+        var id = (lastChecker.id + 1)
         VStack {
             Text("Pleease Select Food Type")
             Menu {
@@ -49,23 +49,31 @@ struct AddIngredientDetailView: View {
                  Text(typeHolder)
             }
             Text("Enter Ingredients name")
-            TextField("Name...", text: $name).textFieldStyle(.roundedBorder).padding()
+            TextField("Name...", text: $name)
+                .textFieldStyle(.roundedBorder)
+                .padding()
             Text("Enter default amount")
             HStack{
             TextField("Amount...", text: $lastBoughtString).textFieldStyle(.roundedBorder).padding()
                 Menu {
                     Button {
                        unitHolder = "Milileters"
+                        let holderMeasurement = Measurement(name: .mililitre, amount: Float(lastBoughtString) ?? 0.0)
+                        unitType = holderMeasurement
                     } label: {
                         Text("Milileters")
                     }
                     Button {
                         unitHolder = "Grams"
+                        let holderMeasurement = Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0)
+                        unitType = holderMeasurement
                     } label: {
                         Text("Grams")
                     }
                     Button {
                         unitHolder = "Units"
+                        let holderMeasurement = Measurement(name: .number, amount: Float(lastBoughtString) ?? 0.0)
+                        unitType = holderMeasurement
                     } label: {
                         Text("Units")
                     }
@@ -76,11 +84,13 @@ struct AddIngredientDetailView: View {
             }
   
            Button{
-               let newIngredient = Ingredient(id: id, name: name, type: type ?? .dairy, lastBoughtAmount: Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0), currentAmount: Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0))
+               let newIngredient = Ingredient(id: id, name: name, type: type ?? .misc, lastBoughtAmount: unitType, currentAmount: unitType)
                 let checker = Ingredient.sampleData.contains{$0.name == name }
                 if !checker {
                     ingAdder(ingredient: newIngredient)
                     id += 1
+                    
+                    unitType = Measurement(name: .number, amount: 0.0)
                 }
                 else {
                     alertPressed = true;
@@ -104,3 +114,17 @@ struct AddIngredientDetailViewComplete: View {
 }
 
 
+
+
+
+
+/*
+ e1, e2, e3, e4, e5, e6, e7
+ add e8
+ id = 9
+ e1, e2, e3, e4, e5, e6, e7, e8
+ delete e5
+ e1, e2, e3, e4 e6, e7, e8
+ 
+ 
+ */
