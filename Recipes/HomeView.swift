@@ -14,14 +14,14 @@ struct HomeView: View {
         
         NavigationView{
             
-            StaggerView(columns: 2, list: posts, content: { post in
+            StaggerView(columns: 1, list: posts, content: { post in
                 
                 PostCardView(post: post)
             })
                 .navigationTitle("Home");
         }
         .onAppear {
-            for index in 1...10 {
+            for index in 1...3 {
                 posts.append(Post(imageURL: "post\(index)"))
             }
         }
