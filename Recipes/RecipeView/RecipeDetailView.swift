@@ -16,7 +16,7 @@ struct RecipeDetailView: View {
                 recipe.photos[0]
                     .resizable()
                     .scaledToFit()
-                    .edgesIgnoringSafeArea(.top)
+                
                 VStack {
                     HStack {
                         Text(recipe.name)
@@ -39,6 +39,7 @@ struct RecipeDetailView: View {
                         Spacer()
                     }
                     Spacer()
+                    RecipeIngredientDisplay(ingredients: recipe.ingredients)
                     StepView(steps: recipe.instructions.count, steplist: recipe.instructions)
                     
                     ScrollView(.horizontal) {
@@ -57,13 +58,39 @@ struct RecipeDetailView: View {
                                 RecipeRow(recipe: .sampleData[2])
                             }
                         }
-                        
                     }
+                    
+//                    Button{
+//                        let myvar = 3
+//                    } label: {
+//                        Text("Finish and remove ingredients")
+//                            .background(.green)
+//                            .foregroundColor(.white)
+//                            .padding(.horizontal)
+//                   }
+                    
                 }
                 .padding()
-
             }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
 
+struct RecipeIngredientDisplay: View {
+    let ingredients: [RecipeIngredient]
+    var body: some View {
+        ScrollView(.horizontal) {
+            
+            ForEach(ingredients, id:\.self) { i in
+                VStack {
+                    Text("\(i.measurement.getMeasurement()) \(i.ingredient.name) \(i.preperation)")
+                    Text("Have \(Ingredient.sampleData[i.ingredient.id].currentAmount.getMeasurement())")
+                }
+                .padding()
+                .background(Color("LightGray"))
+                .cornerRadius(10)
+            }
         }
     }
 }
