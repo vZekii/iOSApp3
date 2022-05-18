@@ -3,7 +3,7 @@
 //  Recipes
 //
 //  Created by Bailey Mendonca on 16/5/2022.
-//
+//TESTING
 
 import Foundation
 import SwiftUI
@@ -69,7 +69,11 @@ struct IngredientView: View {
                                 }
                                 .tint(.green)
                                 Button() {
-                                    let holderIngredient = ShoppingList(id: ShoppingList.sampleData.count + 1, ingredient: ingredient, measurement:  ingredient.lastBoughtAmount)
+                                    var lastValue = 0
+                                    if ShoppingList.sampleData.count > 0 {
+                                        lastValue = getMaxId() + 1
+                                    }
+                                    let holderIngredient = ShoppingList(id: lastValue, ingredient: ingredient, measurement:  ingredient.lastBoughtAmount)
                                     ShoppingList.sampleData.append(holderIngredient)
                                 } label: {
                                     Label("Add to shopping list", systemImage: "cart")
