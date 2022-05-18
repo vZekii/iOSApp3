@@ -22,7 +22,7 @@ struct AddIngredientDetailView: View {
         let lastChecker: Ingredient = Ingredient.sampleData.last!
         var id = (lastChecker.id + 1)
         VStack {
-            Text("Pleease Select Food Type")
+            Text("Please Select Food Type")
             Menu {
                 Button {
                     let holderType: IngredientType = .vegetable
@@ -58,22 +58,19 @@ struct AddIngredientDetailView: View {
                 Menu {
                     Button {
                        unitHolder = "Milileters"
-                        let holderMeasurement = Measurement(name: .mililitre, amount: Float(lastBoughtString) ?? 0.0)
-                        unitType = holderMeasurement
+                        unitType = Measurement(name: .mililitre, amount: Float(lastBoughtString) ?? 0.0)
                     } label: {
                         Text("Milileters")
                     }
                     Button {
                         unitHolder = "Grams"
-                        let holderMeasurement = Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0)
-                        unitType = holderMeasurement
+                        unitType = Measurement(name: .gram, amount: Float(lastBoughtString) ?? 0.0)
                     } label: {
                         Text("Grams")
                     }
                     Button {
                         unitHolder = "Units"
-                        let holderMeasurement = Measurement(name: .number, amount: Float(lastBoughtString) ?? 0.0)
-                        unitType = holderMeasurement
+                        unitType = Measurement(name: .number, amount: Float(lastBoughtString) ?? 0.0)
                     } label: {
                         Text("Units")
                     }
@@ -84,7 +81,7 @@ struct AddIngredientDetailView: View {
             }
   
            Button{
-               let newIngredient = Ingredient(id: id, name: name, type: type ?? .misc, lastBoughtAmount: unitType, currentAmount: unitType)
+               let newIngredient = Ingredient(id: id, name: name, type: type , lastBoughtAmount: unitType, currentAmount: unitType)
                 let checker = Ingredient.sampleData.contains{$0.name == name }
                 if !checker {
                     ingAdder(ingredient: newIngredient)

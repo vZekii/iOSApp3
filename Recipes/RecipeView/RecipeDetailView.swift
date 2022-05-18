@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     let recipe: Recipe
+    @State var cookable: Bool
+    
+    var buttonColor: Color {
+        return cookable ? .green : .gray
+    }
     
     var body: some View {
         ScrollView {
@@ -39,41 +45,55 @@ struct RecipeDetailView: View {
                         Spacer()
                     }
                     Spacer()
-                    RecipeIngredientDisplay(ingredients: recipe.ingredients)
-                    StepView(steps: recipe.instructions.count, steplist: recipe.instructions)
-                    
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 10) {
-                            VStack {
-                                RecipeRow(recipe: .sampleData[3], canCook: cookable(recipe: .sampleData[3]))
-                                RecipeRow(recipe: .sampleData[5], canCook: cookable(recipe: .sampleData[5]))
-                            }
-                            Spacer()
-                            VStack {
-                                RecipeRow(recipe: .sampleData[1], canCook: cookable(recipe: .sampleData[1]))
-                                RecipeRow(recipe: .sampleData[4], canCook: cookable(recipe: .sampleData[4]))
-                            }
-                            VStack {
-                                RecipeRow(recipe: .sampleData[6], canCook: cookable(recipe: .sampleData[6]))
-                                RecipeRow(recipe: .sampleData[2], canCook: cookable(recipe: .sampleData[2]))
-                            }
+                    Group {
+                        RecipeIngredientDisplay(ingredients: recipe.ingredients)
+                        StepView(steps: recipe.instructions.count, steplist: recipe.instructions)
+                        
+                        Button {
+                            cookRecipe(recipe: recipe)
+                            self.presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text("Finish and remove ingredients")
+                                .padding()
+                                .background(buttonColor)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                         }
+                        .disabled(!cookable)
+                        .padding()
+                        
+                        ReccomendedRecipes()
                     }
                     
-//                    Button{
-//                        let myvar = 3
-//                    } label: {
-//                        Text("Finish and remove ingredients")
-//                            .background(.green)
-//                            .foregroundColor(.white)
-//                            .padding(.horizontal)
-//                   }
+                    
                     
                 }
                 .padding()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct ReccomendedRecipes: View {
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack(spacing: 10) {
+                VStack {
+                    RecipeRow(recipe: .sampleData[3], canCook: cookable(recipe: .sampleData[3]))
+                    RecipeRow(recipe: .sampleData[5], canCook: cookable(recipe: .sampleData[5]))
+                }
+                Spacer()
+                VStack {
+                    RecipeRow(recipe: .sampleData[1], canCook: cookable(recipe: .sampleData[1]))
+                    RecipeRow(recipe: .sampleData[4], canCook: cookable(recipe: .sampleData[4]))
+                }
+                VStack {
+                    RecipeRow(recipe: .sampleData[6], canCook: cookable(recipe: .sampleData[6]))
+                    RecipeRow(recipe: .sampleData[2], canCook: cookable(recipe: .sampleData[2]))
+                }
+            }
+        }
     }
 }
 
@@ -85,7 +105,7 @@ struct RecipeIngredientDisplay: View {
                 ForEach(ingredients, id:\.self) { i in
                     VStack {
                         Text("\(i.measurement.getMeasurement()) \(i.ingredient) \(i.preperation)")
-                        Text("Have \(getIngredientAmountFromName(name:i.ingredient))")
+                        Text("Have \(getIngredientAmountFromName(name:i.ingredient).getMeasurement())")
                     }
                     .padding()
                     .background(Color("LightGray"))
@@ -142,6 +162,6 @@ struct DifficultyView: View {
 
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailView(recipe: .sampleData[0])
+        RecipeDetailView(recipe: .sampleData[0], cookable: cookable(recipe: .sampleData[0]))
     }
 }
