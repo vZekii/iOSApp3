@@ -19,7 +19,7 @@ struct AddIngredientDetailView: View {
     @State var lastBoughtString: String = ""
     
     var body: some View {
-        var lastChecker: Ingredient = Ingredient.sampleData.last!
+        let lastChecker: Ingredient = Ingredient.sampleData.last!
         var id = (lastChecker.id + 1)
         VStack {
             Text("Pleease Select Food Type")
