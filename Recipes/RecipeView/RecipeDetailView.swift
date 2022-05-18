@@ -45,17 +45,17 @@ struct RecipeDetailView: View {
                     ScrollView(.horizontal) {
                         HStack(spacing: 10) {
                             VStack {
-                                RecipeRow(recipe: .sampleData[3])
-                                RecipeRow(recipe: .sampleData[5])
+                                RecipeRow(recipe: .sampleData[3], canCook: cookable(recipe: .sampleData[3]))
+                                RecipeRow(recipe: .sampleData[5], canCook: cookable(recipe: .sampleData[5]))
                             }
                             Spacer()
                             VStack {
-                                RecipeRow(recipe: .sampleData[1])
-                                RecipeRow(recipe: .sampleData[4])
+                                RecipeRow(recipe: .sampleData[1], canCook: cookable(recipe: .sampleData[1]))
+                                RecipeRow(recipe: .sampleData[4], canCook: cookable(recipe: .sampleData[4]))
                             }
                             VStack {
-                                RecipeRow(recipe: .sampleData[6])
-                                RecipeRow(recipe: .sampleData[2])
+                                RecipeRow(recipe: .sampleData[6], canCook: cookable(recipe: .sampleData[6]))
+                                RecipeRow(recipe: .sampleData[2], canCook: cookable(recipe: .sampleData[2]))
                             }
                         }
                     }
@@ -84,8 +84,8 @@ struct RecipeIngredientDisplay: View {
             HStack(spacing:10) {
                 ForEach(ingredients, id:\.self) { i in
                     VStack {
-                        Text("\(i.measurement.getMeasurement()) \(i.ingredient.name) \(i.preperation)")
-                        Text("Have \(Ingredient.sampleData[i.ingredient.id].currentAmount.getMeasurement())")
+                        Text("\(i.measurement.getMeasurement()) \(i.ingredient) \(i.preperation)")
+                        Text("Have \(getIngredientAmountFromName(name:i.ingredient))")
                     }
                     .padding()
                     .background(Color("LightGray"))

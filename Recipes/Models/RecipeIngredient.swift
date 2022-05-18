@@ -8,7 +8,7 @@
 import Foundation
 
 struct RecipeIngredient: Hashable {
-    var ingredient: Ingredient
+    var ingredient: String  // this is disgusting but ANYTHING FOR THE MVP FOR VALHALLLAAAAAAAAAAAAA
     var measurement: Measurement
     var preperation: String = "" // stuff like finely chopped, crushed, etc
 }
