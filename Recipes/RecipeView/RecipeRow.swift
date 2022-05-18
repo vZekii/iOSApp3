@@ -16,7 +16,7 @@ struct RecipeRow: View {
                 recipe.photos[0]
                     .resizable()
                     .frame(width: 66, height: 66)
-                    .cornerRadius(10)
+                    .cornerRadius(100)
                 VStack(alignment: .leading) {
                     Text(recipe.name)
                         .font(.headline)

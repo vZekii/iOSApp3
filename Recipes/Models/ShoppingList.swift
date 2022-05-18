@@ -13,6 +13,15 @@ struct ShoppingList: Identifiable, Hashable{
     var measurement: Measurement
 }
 
+func getMaxId() -> Int {
+    var maxId: Int = 0
+    for entry in ShoppingList.sampleData {
+        if entry.id > maxId {
+            maxId = entry.id
+        }
+    }
+    return maxId
+}
 
 extension ShoppingList {
     static var sampleData: [ShoppingList] = [
