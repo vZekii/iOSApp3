@@ -49,7 +49,9 @@ struct AddIngredientDetailView: View {
                  Text(typeHolder)
             }
             Text("Enter Ingredients name")
-            TextField("Name...", text: $name).textFieldStyle(.roundedBorder).padding()
+            TextField("Name...", text: $name)
+                .textFieldStyle(.roundedBorder)
+                .padding()
             Text("Enter default amount")
             HStack{
             TextField("Amount...", text: $lastBoughtString).textFieldStyle(.roundedBorder).padding()

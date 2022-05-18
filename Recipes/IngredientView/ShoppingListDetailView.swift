@@ -11,17 +11,27 @@ import SwiftUI
 
 struct ShoppingListDetailView: View {
     struct EntryRow: View {
-        
+        @State private var striked = false
         var entry: ShoppingList
         var body: some View {
             Text("\(entry.measurement.getMeasurement()) \(entry.ingredient.name)")
+                .strikethrough(striked)
+                .onTapGesture {
+                    self.striked.toggle()
+                    //In future versions if the item gets striked it will remain in the session. However, it will remove from db. This makes it so users can unstrike accidentally striked items without deleting them.
+                }
         }
     }
         
-    
+   
     var body: some View {
         NavigationView {
-            List(ShoppingList.sampleData, rowContent: EntryRow.init)
+            
+            List(ShoppingList.sampleData) { entry in
+                EntryRow(entry: entry)
+                    
+            }
+                    
         }
         .listStyle(.grouped)
         .navigationTitle("Shopping List")
