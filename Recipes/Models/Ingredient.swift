@@ -49,7 +49,7 @@ extension Ingredient {
             ),
         Ingredient(
             id: 2,
-               name: "Carrot",
+               name: "Carrots",
                type: .vegetable,
             lastBoughtAmount: Measurement(name: .number, amount: 6),
             currentAmount: Measurement(name: .number, amount: 1)
