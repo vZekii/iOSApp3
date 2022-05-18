@@ -67,8 +67,7 @@ struct RecipeDetailView: View {
 //                            .background(.green)
 //                            .foregroundColor(.white)
 //                            .padding(.horizontal)
-//                    }
-                        
+//                   }
                     
                 }
                 .padding()
@@ -81,10 +80,18 @@ struct RecipeDetailView: View {
 struct RecipeIngredientDisplay: View {
     let ingredients: [RecipeIngredient]
     var body: some View {
-//        ForEach(ingredients.keys) { i in
-//            Text(i)
-//        }
-        Text("hi")
+        ScrollView(.horizontal) {
+            
+            ForEach(ingredients, id:\.self) { i in
+                VStack {
+                    Text("\(i.measurement.getMeasurement()) \(i.ingredient.name) \(i.preperation)")
+                    Text("Have \(Ingredient.sampleData[i.ingredient.id].currentAmount.getMeasurement())")
+                }
+                .padding()
+                .background(Color("LightGray"))
+                .cornerRadius(10)
+            }
+        }
     }
 }
 
