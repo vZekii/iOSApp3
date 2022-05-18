@@ -31,8 +31,19 @@ extension Recipe {
                photos: [Image("pasta")],
                description: "Our best ever spaghetti bolognese is super easy and a true Italian classic with a meaty, chilli sauce. This recipe comes courtesy of BBC Good Food user Andrew Balmer",
                // instead of defining all the ingredients repetively, we should generate a list that we can reference via id
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
-               timeToMake: 20,
+               ingredients: [
+                    RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 500)),
+                    RecipeIngredient(ingredient: .sampleData[3], measurement: Measurement(name: .mililitre, amount: 30)),
+                    RecipeIngredient(ingredient: .sampleData[4], measurement: Measurement(name: .number, amount: 4), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: .sampleData[5], measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: .sampleData[6], measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: .sampleData[7], measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: .sampleData[8], measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: .sampleData[9], measurement: Measurement(name: .number, amount: 3), preperation: "picked and finely chopped"),
+                    RecipeIngredient(ingredient: .sampleData[10], measurement: Measurement(name: .gram, amount: 500)),
+
+               ],
+               timeToMake: 120,
                servings: 5,
                difficulty: 1,
                instructions: ["Put a large saucepan on a medium heat and add 1 tbsp olive oil.",
