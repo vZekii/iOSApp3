@@ -3,20 +3,20 @@
 //  Recipes
 //
 //  Created by Bailey Mendonca on 16/5/2022.
-//TESTING
+
 
 import Foundation
 import SwiftUI
+
+
 struct IngredientView: View {
     @State private var alertPressed = false
     @State var searchText = ""
     @State var refresher: Bool = false;
     @State var  myIngredient: Ingredient?
     var body: some View {
-    
+        
         NavigationView {
-          
-    
             VStack(alignment: .leading) {
                 HStack {
                 ZStack {
@@ -33,16 +33,21 @@ struct IngredientView: View {
                     .frame(height: 40)
                     .cornerRadius(13)
                     .padding()
-                    VStack {
+                    HStack {
                     
                         NavigationLink(destination: ShoppingListDetailView(), label: { Image(systemName:
-                                                                                                "cart")}).padding();
+                                                                                                "cart")})
                         NavigationLink(destination: AddIngredientDetailView(), label: { Image(systemName:
-                                                                                                        "plus")})
+                                                                                                "plus")}).padding()
+                        Button{
+                            searchText = "Updating"
+                            searchText = ""
+                        } label: {
+                            Image(systemName: "repeat")
+                        }
                     }
                     
                 }
-                .padding()
                 
                List(Ingredient.sampleData) { ingredient in
                     if #available(iOS 15.0, *) {
@@ -98,53 +103,9 @@ struct IngredientView: View {
                 }
                 
             }
-    func deleteIngredient(ingredient: Ingredient) {
-        Ingredient.sampleData.remove(at:
-                                        0)
-      
-        
-    }
         
       
         }
-
-
-func toUp() {
-    let alert = UIAlertController(title: "Add to shopping list", message: "How much would you like to add", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("tapped Dismiss") }))
-    
-
-}
-
-    
-        
-// potential code for later on
-        
-//        NavigationView {
-//            ScrollView {
-//                VStack {
-//                    // Top text and profile button
-//                    HStack {
-//                        Text("Recipes")
-//                            .font(.largeTitle.bold())
-//
-//                        Spacer()
-//
-//                        NavigationLink {
-//                            Text("Profile View")
-//                        } label: {
-//                            Image(systemName: "person.crop.circle")
-//                                .font(.largeTitle)
-//                                .foregroundColor(.blue)
-//                        }
-//                    }
-//
-//                }
-//                .padding()
-//            }
-//            .navigationBarHidden(true)
-//        }
-        
 
 struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
