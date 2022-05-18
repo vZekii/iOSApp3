@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeRow: View {
     let recipe: Recipe
     
+    @State var canCook: Bool
     var body: some View {
         VStack {
             HStack {
@@ -21,18 +22,26 @@ struct RecipeRow: View {
                     Text(recipe.name)
                         .font(.headline)
                     HStack {
-                        Image(systemName: "checkmark")
-                            .foregroundColor(.green)
-                            .font(.subheadline)
-                        Text("Can cook")
-                            .font(.subheadline)
-                            .foregroundColor(.green)
-                            .offset(x: -5)
+                        
+                        if canCook {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.green)
+                                .font(.subheadline)
+                            Text("Can cook")
+                                .font(.subheadline)
+                                .foregroundColor(.green)
+                                .offset(x: -5)
+                        } else {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.gray)
+                                .font(.subheadline)
+                            Text("Can't cook")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .offset(x: -5)
+                        }
                     }
-                    
-//                    Text("Havent made before")
-//                        .font(.subheadline)
-//                        .foregroundColor(.gray)
+
                 }
                 Spacer()
                 //Text("\(recipe.difficulty)")
@@ -46,6 +55,6 @@ struct RecipeRow: View {
 
 struct RecipeRow_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeRow(recipe: Recipe.sampleData[0])
+        RecipeRow(recipe: Recipe.sampleData[0], canCook: cookable(recipe: Recipe.sampleData[0]))
     }
 }

@@ -30,6 +30,17 @@ func ingAdder (ingredient: Ingredient) {
     Ingredient.sampleData.append(ingredient)
 }
 
+func getIngredientAmountFromName(name: String) -> String {
+    // if the ingredient is in the current list
+    for ingredient in Ingredient.sampleData {
+        if ingredient.name == name {
+            return ingredient.currentAmount.getMeasurement()
+        }
+    }
+    // otherwise it's not so there's 0 of it
+    return "0"
+}
+
 extension Ingredient {
     static var sampleData: [Ingredient] = [
         Ingredient(
@@ -64,7 +75,7 @@ extension Ingredient {
         ),
         Ingredient(
             id: 4,
-            name: "Bacon rasher",
+            name: "Bacon Rasher",
             type: .meat,
             lastBoughtAmount: Measurement(name: .number, amount: 16),
             currentAmount: Measurement(name: .number, amount: 16)

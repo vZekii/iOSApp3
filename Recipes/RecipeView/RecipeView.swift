@@ -19,7 +19,7 @@ struct RecipeView: View {
                 NavigationLink {
                     RecipeDetailView(recipe: recipe)
                 } label: {
-                    RecipeRow(recipe: recipe)
+                    RecipeRow(recipe: recipe, canCook: cookable(recipe: recipe))
                 }
             }
             .listStyle(.grouped)

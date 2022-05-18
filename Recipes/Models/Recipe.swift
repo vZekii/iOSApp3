@@ -24,6 +24,13 @@ struct Recipe: Identifiable {
     var userNotes: String
 }
 
+func cookable(recipe: Recipe) -> Bool {
+//    for i in recipe.ingredients {
+//
+//    }
+    return true
+}
+
 extension Recipe {
     static let sampleData: [Recipe] = [
         Recipe(id: 1,
@@ -32,15 +39,15 @@ extension Recipe {
                description: "Our best ever spaghetti bolognese is super easy and a true Italian classic with a meaty, chilli sauce. This recipe comes courtesy of BBC Good Food user Andrew Balmer",
                // instead of defining all the ingredients repetively, we should generate a list that we can reference via id
                ingredients: [
-                    RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 500)),
-                    RecipeIngredient(ingredient: .sampleData[3], measurement: Measurement(name: .mililitre, amount: 30)),
-                    RecipeIngredient(ingredient: .sampleData[4], measurement: Measurement(name: .number, amount: 4), preperation: "finely chopped"),
-                    RecipeIngredient(ingredient: .sampleData[5], measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
-                    RecipeIngredient(ingredient: .sampleData[6], measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
-                    RecipeIngredient(ingredient: .sampleData[7], measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
-                    RecipeIngredient(ingredient: .sampleData[8], measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
-                    RecipeIngredient(ingredient: .sampleData[9], measurement: Measurement(name: .number, amount: 3), preperation: "picked and finely chopped"),
-                    RecipeIngredient(ingredient: .sampleData[10], measurement: Measurement(name: .gram, amount: 500)),
+                    RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 500)),
+                    RecipeIngredient(ingredient: "Olive Oil", measurement: Measurement(name: .mililitre, amount: 30)),
+                    RecipeIngredient(ingredient: "Bacon Rasher", measurement: Measurement(name: .number, amount: 4), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: "Brown Onion", measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: "Carrot", measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: "Celery Stick", measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: "Garlic Clove", measurement: Measurement(name: .number, amount: 2), preperation: "finely chopped"),
+                    RecipeIngredient(ingredient: "Rosemary Leaves", measurement: Measurement(name: .number, amount: 3), preperation: "picked and finely chopped"),
+                    RecipeIngredient(ingredient: "Beef Mince", measurement: Measurement(name: .gram, amount: 500)),
 
                ],
                timeToMake: 120,
@@ -65,7 +72,7 @@ extension Recipe {
                name: "Pasta 2 electric boogaloo",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
+               ingredients: [RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
@@ -78,7 +85,7 @@ extension Recipe {
                name: "Pasta 3 ???????",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
+               ingredients: [RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
@@ -91,7 +98,7 @@ extension Recipe {
                name: "Pasta 4 ong",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
+               ingredients: [RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
@@ -104,7 +111,7 @@ extension Recipe {
                name: "Pasta 5: endgame",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
+               ingredients: [RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
@@ -117,7 +124,7 @@ extension Recipe {
                name: "Too much pasta",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
+               ingredients: [RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
@@ -130,7 +137,7 @@ extension Recipe {
                name: "Am I off the screen yet?",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
+               ingredients: [RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
@@ -143,7 +150,7 @@ extension Recipe {
                name: "PRaying to pasta god",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
+               ingredients: [RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
@@ -156,7 +163,7 @@ extension Recipe {
                name: "Surely enough pasta",
                photos: [Image("pasta")],
                description: "Yummy pasta",
-               ingredients: [RecipeIngredient(ingredient: .sampleData[0], measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
+               ingredients: [RecipeIngredient(ingredient: "Pasta", measurement: Measurement(name: .gram, amount: 300.0), preperation: "finely chopped")],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
