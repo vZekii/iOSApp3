@@ -84,9 +84,7 @@ extension Recipe {
                ingredients: [
                 RecipeIngredient(ingredient: "Eggs", measurement: Measurement(name: .number, amount: 5)),
                 RecipeIngredient(ingredient: "Butter", measurement: Measurement(name: .gram, amount: 100)),
-                RecipeIngredient(ingredient: "Salt", measurement: Measurement(name: .gram, amount: 1)),
-                RecipeIngredient(ingredient: "Pepper", measurement: Measurement(name: .gram, amount: 1)),
-                RecipeIngredient(ingredient: "Milk", measurement: Measurement(name: .mililitre, amount: 30)),
+                RecipeIngredient(ingredient: "Milk", measurement: Measurement(name: .mililitre, amount: 5)),
                ],
                timeToMake: 20,
                servings: 5,
@@ -110,7 +108,7 @@ extension Recipe {
                difficulty: 1,
                instructions: [""],
                timesMade: 0,
-               dietaryRequirements: [DietaryRequirements(name: "vegan")],
+               dietaryRequirements: [DietaryRequirements(name: "none")],
                userNotes: ""
               ),
         Recipe(id: 4,
@@ -127,7 +125,7 @@ extension Recipe {
                difficulty: 1,
                instructions: [""],
                timesMade: 0,
-               dietaryRequirements: [DietaryRequirements(name: "vegan")],
+               dietaryRequirements: [DietaryRequirements(name: "none")],
                userNotes: ""
               ),
         Recipe(id: 5,
@@ -143,7 +141,7 @@ extension Recipe {
                difficulty: 1,
                instructions: [""],
                timesMade: 0,
-               dietaryRequirements: [DietaryRequirements(name: "vegan")],
+               dietaryRequirements: [DietaryRequirements(name: "none")],
                userNotes: ""
               ),
         Recipe(id: 6,
@@ -159,7 +157,7 @@ extension Recipe {
                difficulty: 1,
                instructions: [""],
                timesMade: 0,
-               dietaryRequirements: [DietaryRequirements(name: "vegan")],
+               dietaryRequirements: [DietaryRequirements(name: "vegetarian")],
                userNotes: ""
               ),
         Recipe(id: 7,
