@@ -154,7 +154,6 @@ extension Recipe {
                 RecipeIngredient(ingredient: "Bread", measurement: Measurement(name: .gram, amount: 500)),
                 RecipeIngredient(ingredient: "Cheese", measurement: Measurement(name: .gram, amount: 100)),
                ],
-               ],
                timeToMake: 20,
                servings: 5,
                difficulty: 1,
