@@ -13,19 +13,55 @@ struct StaggerView<Content: View,T: Identifiable>: View {
     
     var list: [T]
     
-    init(list: [T],@ViewBuilder content: @escaping (T) -> Content){
+    var columns: Int
+    
+    var showIndicators: Bool
+    var spacing: CGFloat
+    
+    init(columns: Int,showIndicators: Bool = false, spacing: CGFloat = 10, list: [T],@ViewBuilder content: @escaping (T) -> Content){
         self.content = content
         self.list = list
+        self.spacing = spacing
+        self.showIndicators = showIndicators
+        self.columns = columns
     
     }
     
-    var body: some View {
-        VStack {
+    func setUpList()->[[T]]{
+        
+        
+        var gridArray: [[T]] = Array(repeating: [], count: columns)
+        
+        var currentIndex = 0
+        
+        for object in list {
+            gridArray[currentIndex].append(object)
             
-            ForEach(list) {object in
-                content(object)
+            if currentIndex == (columns - 1) {
+                currentIndex = 0
+            } else {
+                currentIndex += 1
             }
-            
+        }
+        
+        return gridArray
+        
+        
+    }
+    
+    var body: some View {
+        ScrollView(.vertical, showsIndicators: showIndicators) {
+            HStack {
+                
+                ForEach(setUpList(), id: \.self) {columnsData in
+                    
+                    ForEach(columnsData) {object in
+                        content(object)
+                    }
+                }
+                
+            }
+            .padding(.vertical)
         }
     }
 }

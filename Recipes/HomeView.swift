@@ -14,9 +14,9 @@ struct HomeView: View {
         
         NavigationView{
             
-            StaggerView(list: posts, content: { post in
+            StaggerView(columns: 2, list: posts, content: { post in
                 
-                Text(post.imageURL)
+                PostCardView(post: post)
             })
                 .navigationTitle("Home");
         }
@@ -32,5 +32,17 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+    }
+}
+
+struct PostCardView: View{
+    
+    var post: Post
+    
+    var body: some View{
+        Image(post.imageURL)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .cornerRadius(10)
     }
 }
