@@ -10,5 +10,5 @@ import Foundation
 struct RecipeIngredient: Hashable {
     var ingredient: Ingredient
     var measurement: Measurement
-    var preperation: String  // stuff like finely chopped, crushed, etc
+    var preperation: String = "" // stuff like finely chopped, crushed, etc
 }

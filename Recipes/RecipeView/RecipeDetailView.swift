@@ -81,15 +81,16 @@ struct RecipeIngredientDisplay: View {
     let ingredients: [RecipeIngredient]
     var body: some View {
         ScrollView(.horizontal) {
-            
-            ForEach(ingredients, id:\.self) { i in
-                VStack {
-                    Text("\(i.measurement.getMeasurement()) \(i.ingredient.name) \(i.preperation)")
-                    Text("Have \(Ingredient.sampleData[i.ingredient.id].currentAmount.getMeasurement())")
+            HStack(spacing:10) {
+                ForEach(ingredients, id:\.self) { i in
+                    VStack {
+                        Text("\(i.measurement.getMeasurement()) \(i.ingredient.name) \(i.preperation)")
+                        Text("Have \(Ingredient.sampleData[i.ingredient.id].currentAmount.getMeasurement())")
+                    }
+                    .padding()
+                    .background(Color("LightGray"))
+                    .cornerRadius(10)
                 }
-                .padding()
-                .background(Color("LightGray"))
-                .cornerRadius(10)
             }
         }
     }
