@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StaggerView<Content: View,T: Identifiable>: View {
+struct StaggerView<Content: View,T: Identifiable>: View where T: Hashable {
     
     var content: (T) -> Content
     
@@ -32,7 +32,7 @@ struct StaggerView<Content: View,T: Identifiable>: View {
         
         var gridArray: [[T]] = Array(repeating: [], count: columns)
         
-        var currentIndex = 0
+        var currentIndex: Int = 0
         
         for object in list {
             gridArray[currentIndex].append(object)
@@ -51,12 +51,14 @@ struct StaggerView<Content: View,T: Identifiable>: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: showIndicators) {
-            HStack {
+            HStack(alignment: .top) {
                 
                 ForEach(setUpList(), id: \.self) {columnsData in
                     
-                    ForEach(columnsData) {object in
-                        content(object)
+                    LazyVStack(spacing: spacing) {
+                        ForEach(columnsData) {object in
+                            content(object)
+                        }
                     }
                 }
                 
