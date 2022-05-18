@@ -24,10 +24,19 @@ struct Recipe: Identifiable {
     var userNotes: String
 }
 
+func cookRecipe(recipe: Recipe) {
+    for ingredient in recipe.ingredients {
+        useIngredient(name: ingredient.ingredient, amount: ingredient.measurement.amount)
+    }
+}
+
 func cookable(recipe: Recipe) -> Bool {
-//    for i in recipe.ingredients {
-//
-//    }
+    for ingredient in recipe.ingredients {
+        let curr = getIngredientAmountFromName(name: ingredient.ingredient)
+        if (curr.amount < ingredient.measurement.amount) {
+            return false
+        }
+    }
     return true
 }
 

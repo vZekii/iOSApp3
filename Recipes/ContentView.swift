@@ -32,7 +32,7 @@ struct ContentView: View {
                 
                 RecipeView()
                     .tabItem {
-                        Image(systemName: "lock.doc")
+                        Image(systemName: "doc.text")
                         Text("Recipes")
                     }
                     .tag(2)

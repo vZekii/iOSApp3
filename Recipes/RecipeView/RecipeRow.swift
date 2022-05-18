@@ -47,8 +47,9 @@ struct RecipeRow: View {
                 //Text("\(recipe.difficulty)")
             }
             
-            ProgressView(value: Float(recipe.difficulty), total: 5.0)
-                .progressViewStyle(.linear)
+            //  we'll use this later for showing exactly how many ingredients are missing
+//            ProgressView(value: Float(recipe.difficulty), total: 5.0)
+//                .progressViewStyle(.linear)
         }
     }
 }

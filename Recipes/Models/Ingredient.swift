@@ -30,15 +30,29 @@ func ingAdder (ingredient: Ingredient) {
     Ingredient.sampleData.append(ingredient)
 }
 
-func getIngredientAmountFromName(name: String) -> String {
+func getIngredientAmountFromName(name: String) -> Measurement {
     // if the ingredient is in the current list
     for ingredient in Ingredient.sampleData {
         if ingredient.name == name {
-            return ingredient.currentAmount.getMeasurement()
+            return ingredient.currentAmount
         }
     }
     // otherwise it's not so there's 0 of it
-    return "0"
+    return Measurement(name: .number, amount: 0)
+}
+
+func useIngredient(name: String, amount: Float) {
+    var index: Int = 0
+    for ingredient in Ingredient.sampleData {
+        if ingredient.name == name {
+            Ingredient.sampleData[index].currentAmount.amount -= amount
+            if (Ingredient.sampleData[index].currentAmount.amount == 0.0) {
+                Ingredient.sampleData.remove(at: index)
+            }
+        }
+        index += 1
+    }
+    
 }
 
 extension Ingredient {
@@ -103,7 +117,7 @@ extension Ingredient {
         ),
         Ingredient(
             id: 8,
-            name: "Galic Clove",
+            name: "Garlic Clove",
             type: .spice,
             lastBoughtAmount: Measurement(name: .number, amount: 20),
             currentAmount: Measurement(name: .number, amount: 20)
