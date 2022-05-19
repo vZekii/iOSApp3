@@ -14,25 +14,35 @@ struct IngredientView: View {
     @State var searchText = ""
     @State var refresher: Bool = false;
     @State var  myIngredient: Ingredient?
+    
+    var searchResults: [Ingredient] {
+        if searchText.isEmpty {
+            return Ingredient.sampleData
+        } else {
+            return Ingredient.sampleData.filter { $0.name.contains(searchText)}
+        }
+    }
+    
+    
     var body: some View {
         
         NavigationView {
             VStack(alignment: .leading) {
                 HStack {
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(Color("LightGray"))
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        TextField("Search...", text: $searchText)
-                    }
-                        .foregroundColor(.gray)
-                        .padding(.leading, 13)
-                    
-                }
-                    .frame(height: 40)
-                    .cornerRadius(13)
-                    .padding()
+//                    ZStack {
+//                        Rectangle()
+//                            .foregroundColor(Color("LightGray"))
+//                        HStack {
+//                            Image(systemName: "magnifyingglass")
+//                            TextField("Search...", text: $searchText)
+//                        }
+//                            .foregroundColor(.gray)
+//                            .padding(.leading, 13)
+//
+//                    }
+//                    .frame(height: 40)
+//                    .cornerRadius(13)
+//                    .padding()
                     HStack {
                     
                         NavigationLink(destination: ShoppingListDetailView(), label: { Image(systemName:
@@ -49,7 +59,7 @@ struct IngredientView: View {
                     
                 }
                 
-               List(Ingredient.sampleData) { ingredient in
+               List(searchResults) { ingredient in
                     if #available(iOS 15.0, *) {
                         IngredientRow(ingredient: ingredient)
                             .swipeActions(edge: .trailing) {
@@ -97,9 +107,12 @@ struct IngredientView: View {
                         List(Ingredient.sampleData, rowContent: IngredientRow.init)
                     }
                }
+               .searchable(text: $searchText)
+                
                 }
             .listStyle(.grouped)
             .navigationTitle("Ingredients")
+            
                 }
                 
             }
