@@ -28,36 +28,24 @@ struct IngredientView: View {
         
         NavigationView {
             VStack(alignment: .leading) {
-                HStack {
-//                    ZStack {
-//                        Rectangle()
-//                            .foregroundColor(Color("LightGray"))
-//                        HStack {
-//                            Image(systemName: "magnifyingglass")
-//                            TextField("Search...", text: $searchText)
-//                        }
-//                            .foregroundColor(.gray)
-//                            .padding(.leading, 13)
+//                HStack {
+////                    ZStack {
+////                        Rectangle()
+////                            .foregroundColor(Color("LightGray"))
+////                        HStack {
+////                            Image(systemName: "magnifyingglass")
+////                            TextField("Search...", text: $searchText)
+////                        }
+////                            .foregroundColor(.gray)
+////                            .padding(.leading, 13)
+////
+////                    }
+////                    .frame(height: 40)
+////                    .cornerRadius(13)
+////                    .padding()
 //
-//                    }
-//                    .frame(height: 40)
-//                    .cornerRadius(13)
-//                    .padding()
-                    HStack {
-                    
-                        NavigationLink(destination: ShoppingListDetailView(), label: { Image(systemName:
-                                                                                                "cart")})
-                        NavigationLink(destination: AddIngredientDetailView(), label: { Image(systemName:
-                                                                                                "plus")}).padding()
-                        Button{
-                            searchText = "Updating"
-                            searchText = ""
-                        } label: {
-                            Image(systemName: "repeat")
-                        }
-                    }
-                    
-                }
+//
+//                }
                 
                List(searchResults) { ingredient in
                     if #available(iOS 15.0, *) {
@@ -112,7 +100,24 @@ struct IngredientView: View {
                 }
             .listStyle(.grouped)
             .navigationTitle("Ingredients")
-            
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: ShoppingListDetailView(), label: { Image(systemName: "cart")})
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: AddIngredientDetailView(), label: { Image(systemName: "plus")})
+                }
+                ToolbarItem(placement: .automatic) {
+                    Button{
+                        searchText = "Updating"
+                        searchText = ""
+                    } label: {
+                        Image(systemName: "repeat")
+                    }
+                }
+
+                
+            }
                 }
                 
             }
