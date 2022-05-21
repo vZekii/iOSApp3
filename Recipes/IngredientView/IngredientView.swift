@@ -105,6 +105,7 @@ struct IngredientView: View {
                         searchText = "Updating"
                         searchText = ""
                     } label: {
+                        Text("Refresh")
                         Image(systemName: "repeat")
                     }
                 }
