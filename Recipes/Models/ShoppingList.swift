@@ -13,6 +13,7 @@ struct ShoppingList: Identifiable, Hashable{
     var measurement: Measurement
 }
 
+//used to get the max id of shopping list array in order to append without doubleups
 func getMaxId() -> Int {
     var maxId: Int = 0
     for entry in ShoppingList.sampleData {
@@ -23,6 +24,7 @@ func getMaxId() -> Int {
     return maxId
 }
 
+//sample data for prototype
 extension ShoppingList {
     static var sampleData: [ShoppingList] = [
         ShoppingList(
