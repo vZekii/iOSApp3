@@ -12,11 +12,6 @@ enum IngredientType {
     case vegetable, fruit, meat, dairy, grain, baked_good, seafood, nut, herb, spice, garnish, oil, seasoning, noodle, misc  // extended
 }
 
-//struct Ingredient: Hashable {
-//    var name: String
-//    var type: IngredientType
-//
-//}
 
 struct Ingredient: Hashable, Identifiable{
     var id: Int
@@ -26,6 +21,7 @@ struct Ingredient: Hashable, Identifiable{
     var currentAmount: Measurement
 }
 
+//function used to append ingrident
 func ingAdder (ingredient: Ingredient) {
     Ingredient.sampleData.append(ingredient)
 }
@@ -41,6 +37,7 @@ func getIngredientAmountFromName(name: String) -> Measurement {
     return Measurement(name: .number, amount: 0)
 }
 
+//uses the ingredient and changes value based on whats left after use
 func useIngredient(name: String, amount: Float) {
     var index: Int = 0
     for ingredient in Ingredient.sampleData {
@@ -55,6 +52,7 @@ func useIngredient(name: String, amount: Float) {
     
 }
 
+//sample data
 extension Ingredient {
     static var sampleData: [Ingredient] = [
         Ingredient(
