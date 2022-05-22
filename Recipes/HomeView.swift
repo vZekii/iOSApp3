@@ -14,7 +14,7 @@ struct HomeView: View {
         
         NavigationView{
             
-            StaggerView(columns: 1, list: posts, content: { post in
+            StaggerView(columns: 2, list: posts, content: { post in
                 
                 PostCardView(post: post)
             })
@@ -22,7 +22,7 @@ struct HomeView: View {
         }
         .onAppear {
             for index in 1...3 {
-                posts.append(Post(imageURL: "post\(index)"))
+                posts.append(Post(imageURL: "post\(index)", text: "hi"))
             }
         }
         
@@ -40,9 +40,14 @@ struct PostCardView: View{
     var post: Post
     
     var body: some View{
-        Image(post.imageURL)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .cornerRadius(10)
+        
+        VStack() {
+            Image(post.imageURL)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(10)
+                
+            Text(post.text)
+        }.background(Rectangle())
     }
 }
