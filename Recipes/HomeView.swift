@@ -11,7 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @State var posts: [Post] = []
     var postText = ["Ingredients", "Profile", "Recipes", "Shopping List", "New Recipe"]
-    var descText = ["aa","bb","cc","Make sure to not miss a single ingredient!","ee"]
+    var descText = ["Add all the Ingredients needed!","Check your Pofile","See all Curated Recipes","Make sure to not miss a single ingredient!","Fruit Salad has been Added!"]
     var body: some View {
         
         NavigationView{
@@ -54,7 +54,9 @@ struct PostCardView: View{
                 .cornerRadius(10)
                 
             Text(post.text).font(.headline)
-            //Text(post.descText).font(.subheadline).frame(maxWidth: .infinity, alignment: .center)
+            HStack() {
+                Text(post.descText).font(.subheadline).frame(maxWidth: .infinity, alignment: .center)
+            }
             
             
         }.background(Rectangle().foregroundColor(Color.gray.opacity(0.1)).cornerRadius(10))
