@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct RecipeRow: View {
+    // Displays each recipe as a row - used in the recipe view and to show reccomendations at the bottom of the detail view
     let recipe: Recipe
-    
+    // State to manage whether the recipe is cookable
     @State var canCook: Bool
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct RecipeRow: View {
                     Text(recipe.name)
                         .font(.headline)
                     HStack {
-                        
+                        // display a checkmark if it's cookable, otherwise show a x mark
                         if canCook {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.green)

@@ -29,6 +29,7 @@ struct RecipeDetailView: View {
                             .font(.title)
                         Spacer()
                     }
+                    // shows the star rating
                     DifficultyView(difficulty: recipe.difficulty)
                     Spacer()
                     HStack {
@@ -46,9 +47,12 @@ struct RecipeDetailView: View {
                     }
                     Spacer()
                     Group {
+                        // display the ingredients
                         RecipeIngredientDisplay(ingredients: recipe.ingredients)
+                        // display the steps for the recipe
                         StepView(steps: recipe.instructions.count, steplist: recipe.instructions)
                         
+                        // show the "cook" button, and style it if the current recipe is cookable or not
                         Button {
                             cookRecipe(recipe: recipe)
                             self.presentationMode.wrappedValue.dismiss()
@@ -75,6 +79,7 @@ struct RecipeDetailView: View {
     }
 }
 
+// The reccomended recipe view that shows a small list of reccomended recipes at the bottom of a recipe page
 struct ReccomendedRecipes: View {
     var body: some View {
         ScrollView(.horizontal) {
@@ -97,6 +102,7 @@ struct ReccomendedRecipes: View {
     }
 }
 
+// A view which shows a scrollable list of all the ingredients required for the recipe
 struct RecipeIngredientDisplay: View {
     let ingredients: [RecipeIngredient]
     var body: some View {
@@ -116,6 +122,7 @@ struct RecipeIngredientDisplay: View {
     }
 }
 
+// Shows the list of instructions by recursively displaying each step.
 struct StepView: View {
     let steps: Int
     let steplist: [String]
@@ -140,6 +147,7 @@ struct StepView: View {
     }
 }
 
+// Displays the difficulty of the current recipe with an amount of coloured stars
 struct DifficultyView: View {
     let difficulty: Int
     

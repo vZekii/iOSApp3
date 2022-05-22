@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Model to store each recipe ingredient
 struct RecipeIngredient: Hashable {
     var ingredient: String  // this is disgusting but ANYTHING FOR THE MVP FOR VALHALLLAAAAAAAAAAAAA
     var measurement: Measurement

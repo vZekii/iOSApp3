@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// The view which wraps all the content with the tab bar 
 struct ContentView: View {
     init() {
         UITabBar.appearance().backgroundColor = .systemGray6

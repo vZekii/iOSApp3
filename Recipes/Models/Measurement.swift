@@ -11,6 +11,7 @@ enum MeasurementName: String, Codable {
     case cup, teaspoon, tablespoon, mililitre, litre, gram, kilogram, number
 }
 
+// Model to store measurements of ingredients - will be extended in the future to allow automatic conversion between different measurements
 struct Measurement: Hashable, Codable {
     var name: MeasurementName  // cup, teaspoon, etc
     var amount: Float

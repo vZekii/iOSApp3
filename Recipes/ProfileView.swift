@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct ProfileView: View {
+    // A simple profile page showing options that we will add in future versions.
     @State var displayMode: Int = 0
     @State var dietaryreq: Int = 0
     @State var showonly: Bool = true
@@ -16,7 +17,6 @@ struct ProfileView: View {
 
     var displaymodes = ["Light", "Dark", "System Setting"]
     var dietaryreqs = ["Vegan", "Gluten Free", "Vegetarian"]
-
 
     var body: some View {
         NavigationView {

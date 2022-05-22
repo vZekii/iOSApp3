@@ -7,6 +7,7 @@
 
 import Foundation
 
+// A model for storing dietary requirements - will be extended later
 struct DietaryRequirements {
     var name: String
 }

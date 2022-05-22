@@ -12,7 +12,7 @@ enum IngredientType {
     case vegetable, fruit, meat, dairy, grain, baked_good, seafood, nut, herb, spice, garnish, oil, seasoning, noodle, misc  // extended
 }
 
-
+// Model for storing each ingredient
 struct Ingredient: Hashable, Identifiable{
     var id: Int
     var name: String
@@ -26,6 +26,7 @@ func ingAdder (ingredient: Ingredient) {
     Ingredient.sampleData.append(ingredient)
 }
 
+// Get the current amount owned of an ingredient by it's name
 func getIngredientAmountFromName(name: String) -> Measurement {
     // if the ingredient is in the current list
     for ingredient in Ingredient.sampleData {

@@ -29,6 +29,7 @@ struct RecipeView: View {
 
     }
     
+    // filter our results if a search is made
     var searchResults: [Recipe] {
         if searchText.isEmpty {
             return Recipe.sampleData
@@ -38,35 +39,6 @@ struct RecipeView: View {
     }
     
 }
-        
-        
-// potential code for later on
-        
-//        NavigationView {
-//            ScrollView {
-//                VStack {
-//                    // Top text and profile button
-//                    HStack {
-//                        Text("Recipes")
-//                            .font(.largeTitle.bold())
-//
-//                        Spacer()
-//
-//                        NavigationLink {
-//                            Text("Profile View")
-//                        } label: {
-//                            Image(systemName: "person.crop.circle")
-//                                .font(.largeTitle)
-//                                .foregroundColor(.blue)
-//                        }
-//                    }
-//
-//                }
-//                .padding()
-//            }
-//            .navigationBarHidden(true)
-//        }
-        
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-// This was written before the data structure thing in the doc so it has to be changed.
+// A model for storing the recipes.
 struct Recipe: Identifiable {
     var id: Int
     var name: String
@@ -24,12 +24,14 @@ struct Recipe: Identifiable {
     var userNotes: String
 }
 
+// "Cooks" the recipe by removing the amounts from the ingredient store, by "using" them
 func cookRecipe(recipe: Recipe) {
     for ingredient in recipe.ingredients {
         useIngredient(name: ingredient.ingredient, amount: ingredient.measurement.amount)
     }
 }
 
+// Checks if the current recipe is cookable by making sure there's enough of each ingredient
 func cookable(recipe: Recipe) -> Bool {
     for ingredient in recipe.ingredients {
         let curr = getIngredientAmountFromName(name: ingredient.ingredient)
@@ -40,6 +42,7 @@ func cookable(recipe: Recipe) -> Bool {
     return true
 }
 
+// The sample data store for the recipes
 extension Recipe {
     static let sampleData: [Recipe] = [
         Recipe(id: 1,
