@@ -55,6 +55,8 @@ struct PostCardView: View{
                 
             Text(post.text).font(.headline)
             //Text(post.descText).font(.subheadline).frame(maxWidth: .infinity, alignment: .center)
+            
+            
         }.background(Rectangle().foregroundColor(Color.gray.opacity(0.1)).cornerRadius(10))
     }
 }
