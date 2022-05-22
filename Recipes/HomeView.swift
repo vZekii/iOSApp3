@@ -21,8 +21,12 @@ struct HomeView: View {
                 .navigationTitle("Home");
         }
         .onAppear {
-            for index in 1...3 {
-                posts.append(Post(imageURL: "post\(index)", text: "hi"))
+            
+            for index in 1...5 {
+                if (posts.count < 5) { //for some reason this code is repeated when changing views, this is a hot fix
+                    posts.append(Post(imageURL: "post\(index)", text: "hi"))
+                }
+                //posts[index] = Post(imageURL: "post\(index)", text: "hi")
             }
         }
         
@@ -48,6 +52,6 @@ struct PostCardView: View{
                 .cornerRadius(10)
                 
             Text(post.text)
-        }.background(Rectangle())
+        }.background(Rectangle().foregroundColor(Color.gray.opacity(0.1)).cornerRadius(10))
     }
 }
