@@ -10,6 +10,8 @@ import SwiftUI
 // Just our tab view controller (just for switching tabs)
 struct HomeView: View {
     @State var posts: [Post] = []
+    var postText = ["Ingredients", "Profile", "Recipes", "Shopping List", "New Recipe"]
+    var descText = ["aa","bb","cc","Make sure to not miss a single ingredient!","ee"]
     var body: some View {
         
         NavigationView{
@@ -24,7 +26,7 @@ struct HomeView: View {
             
             for index in 1...5 {
                 if (posts.count < 5) { //for some reason this code is repeated when changing views, this is a hot fix
-                    posts.append(Post(imageURL: "post\(index)", text: "hi"))
+                    posts.append(Post(imageURL: "post\(index)", text: postText[index-1], descText: descText[index-1]))
                 }
                 //posts[index] = Post(imageURL: "post\(index)", text: "hi")
             }
@@ -51,7 +53,8 @@ struct PostCardView: View{
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(10)
                 
-            Text(post.text)
+            Text(post.text).font(.headline)
+            //Text(post.descText).font(.subheadline).frame(maxWidth: .infinity, alignment: .center)
         }.background(Rectangle().foregroundColor(Color.gray.opacity(0.1)).cornerRadius(10))
     }
 }
